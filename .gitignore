@@ -4,6 +4,7 @@ node_modules/
 # Build
 dist/
 core/**/*.js
+core/**/*.js.map
 
 # Cache
 .npm
