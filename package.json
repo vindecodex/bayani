@@ -6,7 +6,6 @@
   "scripts": {
     "build": "npm run lint; webpack; node ./dist/bundled.js",
     "lint": "eslint ./core/**/*.ts",
-    "dev": "npm run lint; tsc -w"
   },
   "keywords": [],
   "author": "",
