@@ -1,0 +1,12 @@
+{
+	"extends": "@tsconfig/node12/tsconfig.json",
+	"compilerOptions": {
+		"removeComments": true,
+		"sourceMap": true,
+		"lib": ["es2019"]
+	},
+	"include": ["core/**/*"],
+	"watchOptions": {
+		"excludeDirectories": ["**/node_modules", "dist"]
+	}
+}

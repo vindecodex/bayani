@@ -1,0 +1,10 @@
+# Dependency
+node_modules/
+
+# Build
+dist/
+core/**/*.js
+
+# Cache
+.npm
+.eslintcache
