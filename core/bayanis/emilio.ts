@@ -4,7 +4,12 @@ import { Attribute } from '../obj/attribute';
 
 class Emilio implements Bayani {
 	attribute: Attribute;
-	constructor(attribute = { name: "Emilio", health: 100, attackSpeed: 10, power: 8 }) {
+	constructor(attribute: Attribute = { 
+			name: "Emilio", 
+			health: 100, 
+			attackSpeed: 10, 
+			power: 8 
+	}) {
 		this.attribute = attribute;
 	}
 	findTarget(bayaniList: BayaniList): Bayani {
