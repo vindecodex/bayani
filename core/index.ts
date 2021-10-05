@@ -1,5 +1,5 @@
 import { bayaniMenu } from './obj/bayanis';
-import './bayanis/register';
+import './bayanis';
 
 import Game from './obj/game';
 

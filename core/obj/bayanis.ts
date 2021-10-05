@@ -6,7 +6,7 @@ export type BayaniList = {
 
 class BayaniMenu {
 	bayanis: BayaniList;
-	constructor(bayanis = {bayani: []}) {
+	constructor(bayanis: BayaniList = {bayani: []}) {
 		this.bayanis = bayanis;
 	}
 	register(bayani: Bayani) {
