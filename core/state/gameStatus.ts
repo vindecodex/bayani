@@ -1,5 +1,4 @@
 export interface GameStatus {
-	state: GameStatus;
 	bayaniPickA(): boolean;
 	bayaniPickB(): boolean;
 	setPlayerNameA(): boolean;
