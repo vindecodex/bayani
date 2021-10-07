@@ -1,8 +1,14 @@
-import { bayaniMenu } from './obj/bayanis';
-import './bayanis';
+import newGame from './obj/game';
+import newBossing from './player/bossing';
+import newBot from './player/bot';
 
-import Game from './obj/game';
+const g = newGame;
 
-const newGame = new Game(bayaniMenu.bayanis);
-console.log(bayaniMenu);
-console.log(newGame);
+console.log(g.getBayaniMenu());
+
+g.setPlayers(newBossing, newBot);
+
+g.bayaniPick(1);
+g.bayaniPick(2);
+
+console.log(g.getBayaniMenu());
