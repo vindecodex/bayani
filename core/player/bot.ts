@@ -7,8 +7,8 @@ class Bot implements Player {
 	bayanis: BayaniList;
 
 	constructor(
-		health: number = 0, 
-		name: string = '',
+		health = 0, 
+		name = 'Bot',
 		bayanis: BayaniList = { bayani: []},
 	) {
 		this.health = health;
@@ -17,10 +17,13 @@ class Bot implements Player {
 	}
 
 	pickBayani(): void {
-
+		console.log('pick bayani');
 	}
 
 	calculateHealth(): void {
-
+		console.log('calculateHealth');
 	}
 }
+
+const newBot = (): Player => new Bot();
+export default newBot();
