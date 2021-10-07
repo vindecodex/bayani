@@ -1,6 +1,6 @@
 import { Bayani } from './bayani';
 import { BayaniList } from '../obj/bayanis';
-import { Attribute } from '../obj/attribute';
+import { Attribute } from './attribute';
 
 class Panday implements Bayani {
 	attribute: Attribute;
