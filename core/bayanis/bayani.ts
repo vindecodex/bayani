@@ -1,4 +1,4 @@
-import { Attribute } from '../obj/attribute';
+import { Attribute } from './attribute';
 import { BayaniList } from '../obj/bayanis';
 
 export interface Bayani {

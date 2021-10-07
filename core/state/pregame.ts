@@ -1,9 +1,10 @@
+import { GameInterface } from '../obj/gameInterface';
 import { GameStatus } from './gameStatus';
 
 export class PreGame implements GameStatus {
-	state: GameStatus;
-	constructor(state: GameStatus) {
-		this.state = state;
+	game: GameInterface;
+	constructor(game: GameInterface) {
+		this.game = game;
 	}
 	bayaniPickA(): boolean {
 		return false;

@@ -1,9 +1,10 @@
+import { Bayani } from '../bayanis/bayani';
 import { BayaniList } from '../obj/bayanis';
 
 export interface Player {
 	health: number;
 	name: string;
 	bayanis: BayaniList;
-	pickBayani(): void;
+	pickBayani(bayani: Bayani): void;
 	calculateHealth(): void;
 }
