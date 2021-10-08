@@ -20,6 +20,10 @@ class Game implements GameInterface {
 		this.state = state;
 	}
 
+	getState(): GameStatus {
+		return this.state;
+	}
+
 	setPlayers(p1: Player, p2: Player): void {
 		if (!this.state?.setPlayerNameA() || !this.state?.setPlayerNameB()) return;
 		const p: Player[] = [];
@@ -29,21 +33,42 @@ class Game implements GameInterface {
 		this.setState(this.pickState);
 	}
 
-	bayaniPick(index: number): void {
+	getPlayers(): Player[] {
+		return this.players;
+	}
+
+	getPlayerA(): Player {
+		return this.players[0];
+	}
+
+	getPlayerB(): Player {
+		return this.players[1];
+	}
+
+	playerAPick(index: number): void {
 		if (!this.state.bayaniPickA() && !this.state.bayaniPickB()) return;
 		this.players[0].pickBayani(this.bayaniMenu.bayani[index]);
-		const newBayani: BayaniList = { 
-			bayani: this.bayaniMenu.bayani.filter(bayani => {
-				if (bayani.attribute.name !== this.bayaniMenu.bayani[index].attribute.name)
-					return true;
-				return false;
-			})
-		}
-		this.bayaniMenu = newBayani;
+		this.bayaniMenu.bayani[index].picked = true;
+	}
+
+	playerBPick(index: number): void {
+		if (!this.state.bayaniPickA() && !this.state.bayaniPickB()) return;
+		this.players[1].pickBayani(this.bayaniMenu.bayani[index]);
+		this.bayaniMenu.bayani[index].picked = true;
+	}
+
+	setBayaniMenu(bayaniMenu: BayaniList): void {
+		this.bayaniMenu = bayaniMenu;
 	}
 
 	getBayaniMenu(): BayaniList {
 		return this.bayaniMenu;
+	}
+
+	getBayaniUnpicked(): BayaniList {
+		const bayanis: BayaniList = { bayani: []};
+		bayanis.bayani = this.bayaniMenu.bayani.filter(bayani => !bayani.picked);
+		return bayanis;
 	}
 }
 
@@ -58,7 +83,7 @@ const newGame = (): GameInterface => {
 	g.preGameState = _preGameState;
 	g.pickState = _pickState;
 	g.battleState = _battleState;
-	g.bayaniMenu = _bayaniMenu;
+	g.setBayaniMenu(_bayaniMenu);
 
 	return g;
 }
