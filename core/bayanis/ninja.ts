@@ -2,12 +2,12 @@ import { Bayani } from './bayani';
 import { BayaniList } from '../obj/bayanis';
 import { Attribute } from '../obj/attribute';
 
-class Pedro implements Bayani {
+class Ninja implements Bayani {
 	attribute: Attribute;
 	picked: boolean;
 	constructor(
 		attribute: Attribute = { 
-			name: "Pedro",
+			name: "Ninja",
 			health: 100, 
 			totalHealth: 100,
 			attackSpeed: 30, 
@@ -26,4 +26,4 @@ class Pedro implements Bayani {
 	}
 }
 
-export const lapulapu = new Pedro();
+export const ninja = new Ninja();
