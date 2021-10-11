@@ -2,7 +2,7 @@ import { Bayani } from './bayani';
 import { BayaniList } from '../obj/bayanis';
 import { Attribute } from './attribute';
 
-class Leni implements Bayani {
+class Luna implements Bayani {
 	attribute: Attribute;
 	picked: boolean;
 	constructor(
