@@ -24,6 +24,14 @@ class Game implements GameInterface {
 		return this.state;
 	}
 
+	randomPick(player: Player): void {
+		const unpicked = this.getBayaniUnpicked().bayani;
+		const l = unpicked.length;
+		const r = Math.floor(Math.random() * l);
+		player.pickBayani(unpicked[r]);
+		this.getBayaniUnpicked().bayani[r].picked = true;
+	}
+
 	setPlayers(p1: Player, p2: Player): void {
 		if (!this.state?.setPlayerNameA() || !this.state?.setPlayerNameB()) return;
 		const p: Player[] = [];
@@ -47,12 +55,13 @@ class Game implements GameInterface {
 
 	playerAPick(index: number): void {
 		if (!this.state.bayaniPickA() && !this.state.bayaniPickB()) return;
-		this.players[0].pickBayani(this.bayaniMenu.bayani[index]);
+		this.getPlayerA().pickBayani(this.bayaniMenu.bayani[index]);
 		this.bayaniMenu.bayani[index].picked = true;
 	}
 
 	playerBPick(index: number): void {
 		if (!this.state.bayaniPickA() && !this.state.bayaniPickB()) return;
+		if (!this.getPlayerA().isReady()) return;
 		this.players[1].pickBayani(this.bayaniMenu.bayani[index]);
 		this.bayaniMenu.bayani[index].picked = true;
 	}
@@ -87,4 +96,4 @@ const newGame = (): GameInterface => {
 
 	return g;
 }
-export default newGame();
+export default newGame;
