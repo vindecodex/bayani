@@ -9,6 +9,7 @@ export interface GameInterface {
 
 	setState(state: GameStatus): void;
 	getState(): GameStatus;
+	randomPick(player: Player): void;
 
 	setPlayers(p1: Player, p2: Player): void;
 	getPlayers(): Player[];
