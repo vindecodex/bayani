@@ -24,12 +24,19 @@ class Bossing implements Player {
 		if (this.bayanis.bayani.length < 5) {
 			this.bayanis.bayani.push(bayani);
 			this.totalHealth += bayani.attribute.totalHealth;
+			this.health = this.totalHealth;
 			return;
 		}
 	}
 
+	isReady(): boolean {
+		if (this.bayanis.bayani.length < 5) return false;
+		return true;
+	}
+
 	calculateHealth(): void {
-		console.log('calculateHealth');
+		const percentage = (this.health / this.totalHealth) * 100
+		console.log(percentage);
 	}
 }
 

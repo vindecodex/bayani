@@ -1,6 +1,6 @@
 import { Bayani } from './bayani';
 import { BayaniList } from '../obj/bayanis';
-import { Attribute } from '../obj/attribute';
+import { Attribute } from './attribute';
 
 class Pedro implements Bayani {
 	attribute: Attribute;
@@ -26,4 +26,4 @@ class Pedro implements Bayani {
 	}
 }
 
-export const lapulapu = new Pedro();
+export const pedro = new Pedro();

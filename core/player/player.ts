@@ -7,5 +7,6 @@ export interface Player {
 	name: string;
 	bayanis: BayaniList;
 	pickBayani(bayani: Bayani): void;
+	isReady(): boolean;
 	calculateHealth(): void;
 }
