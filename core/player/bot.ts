@@ -35,7 +35,9 @@ class Bot implements Player {
 	}
 
 	calculateHealth(): void {
-		console.log('calculateHealth');
+		let sum = 0;
+		for (const b of this.bayanis.bayani) sum += b.attribute.health;
+		this.health = (sum / this.totalHealth) * 100;
 	}
 }
 

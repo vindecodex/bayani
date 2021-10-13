@@ -30,6 +30,7 @@ class Game implements GameInterface {
 		const r = Math.floor(Math.random() * l);
 		player.pickBayani(unpicked[r]);
 		this.getBayaniUnpicked().bayani[r].picked = true;
+		if (this.getPlayerA().isReady() && this.getPlayerB().isReady()) this.setState(this.battleState);
 	}
 
 	setPlayers(p1: Player, p2: Player): void {
@@ -57,13 +58,16 @@ class Game implements GameInterface {
 		if (!this.state.bayaniPickA() && !this.state.bayaniPickB()) return;
 		this.getPlayerA().pickBayani(this.bayaniMenu.bayani[index]);
 		this.bayaniMenu.bayani[index].picked = true;
+		if (this.getPlayerA().isReady() && this.getPlayerB().isReady()) this.setState(this.battleState);
 	}
 
 	playerBPick(index: number): void {
+		console.log(this.getPlayerA().isReady(), this.getPlayerB().isReady());
 		if (!this.state.bayaniPickA() && !this.state.bayaniPickB()) return;
 		if (!this.getPlayerA().isReady()) return;
 		this.players[1].pickBayani(this.bayaniMenu.bayani[index]);
 		this.bayaniMenu.bayani[index].picked = true;
+		if (this.getPlayerA().isReady() && this.getPlayerB().isReady()) this.setState(this.battleState);
 	}
 
 	setBayaniMenu(bayaniMenu: BayaniList): void {
@@ -78,6 +82,20 @@ class Game implements GameInterface {
 		const bayanis: BayaniList = { bayani: []};
 		bayanis.bayani = this.bayaniMenu.bayani.filter(bayani => !bayani.picked);
 		return bayanis;
+	}
+
+	getLineUp(): BayaniList {
+		const bayanis: BayaniList = { bayani: []};
+		const lineUp = this.getPlayerA().bayanis.bayani.concat(this.getPlayerB().bayanis.bayani);
+		lineUp.sort((x, y) => y.attribute.attackSpeed - x.attribute.attackSpeed)
+		bayanis.bayani = lineUp;
+		return bayanis;
+	}
+
+	battle(fn: (p1: Player, p2: Player) => void): void {
+		while(this.getPlayerA().health > 0 && this.getPlayerB().health > 0) {
+			fn(this.getPlayerA(), this.getPlayerB());
+		}
 	}
 }
 

@@ -35,8 +35,9 @@ class Bossing implements Player {
 	}
 
 	calculateHealth(): void {
-		const percentage = (this.health / this.totalHealth) * 100
-		console.log(percentage);
+		let sum = 0;
+		for (const b of this.bayanis.bayani) sum += b.attribute.health;
+		this.health = (sum / this.totalHealth) * 100;
 	}
 }
 

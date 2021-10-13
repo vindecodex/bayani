@@ -5,5 +5,5 @@ export interface Bayani {
 	attribute: Attribute;
 	picked: boolean;
 	findTarget(bayanis: BayaniList): Bayani;
-	execute(): void;
+	execute(alies: BayaniList, enemy: BayaniList): void;
 }
