@@ -18,20 +18,33 @@ g.playerAPick(1);
 g.playerAPick(2);
 g.playerAPick(3);
 g.playerAPick(4);
-g.playerAPick(10);
 
 console.log(g.getPlayerA().bayanis);
+g.getPlayerA().calculateHealth();
+console.log(g.getPlayerA().health);
 
 
 console.log('===========UNPICKS==============')
 console.log(g.getBayaniUnpicked());
-console.log(g.getPlayerA().totalHealth);
 
 
 console.log('===========BOT PICKS==============')
-
 while(!g.getPlayerB().isReady()) {
 	g.randomPick(g.getPlayerB());
 }
 console.log(g.getPlayerB().bayanis);
-console.log(g.getPlayerB().totalHealth);
+g.getPlayerA().calculateHealth();
+console.log(g.getPlayerA().health);
+
+console.log('===========Battle==============')
+const lineup = g.getLineUp();
+
+g.battle((p1, p2) => {
+	lineup.bayani.forEach(bayani => {
+		console.log(`P1: ${p1.health} - P2: ${p2.health}`);
+		bayani.execute(p1.bayanis, p2.bayanis);
+		p1.calculateHealth();
+		p2.calculateHealth();
+	});
+});
+

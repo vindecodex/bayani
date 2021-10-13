@@ -21,4 +21,7 @@ export interface GameInterface {
 	setBayaniMenu(bayaniMenu: BayaniList): void;
 	getBayaniMenu(): BayaniList;
 	getBayaniUnpicked(): BayaniList;
+
+	battle(fn: (p1: Player, p2: Player) => void): void
+	getLineUp(): BayaniList
 }

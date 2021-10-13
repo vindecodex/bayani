@@ -19,10 +19,12 @@ class Apolinario implements Bayani {
 		this.picked = picked;
 	}
 	findTarget(bayaniList: BayaniList): Bayani {
-		return bayaniList.bayani[0];
+		const choosen = Math.floor(Math.random() * bayaniList.bayani.length);
+		return bayaniList.bayani[choosen];
 	}
-	execute(): void {
-		console.log("execute");
+	execute(alies: BayaniList, enemy: BayaniList): void {
+		const target = this.findTarget(enemy);
+		target.attribute.health -= this.attribute.power;
 	}
 }
 
