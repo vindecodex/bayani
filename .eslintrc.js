@@ -15,5 +15,10 @@ module.exports = {
 	env: {
 		browser: true,
 		node: true,
-	}
+		jest: true
+	},
+	plugins: [
+		"jest",
+		"@typescript-eslint"
+	]
 }
