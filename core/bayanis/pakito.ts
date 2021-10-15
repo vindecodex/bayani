@@ -1,28 +1,34 @@
 import { Bayani } from './bayani';
+import { Player } from '../player/player';
+import newUnknown from '../player/unknown';
 import { BayaniList } from '../obj/bayanis';
 import { Attribute } from './attribute';
 
 class Pakito implements Bayani {
 	attribute: Attribute;
 	picked: boolean;
+	owner: Player;
 	constructor(
-		attribute: Attribute = { 
-			name: "Pakito", 
-			health: 150, 
+		attribute: Attribute = {
+			name: "Pakito",
+			health: 150,
 			totalHealth: 150,
-			attackSpeed: 60, 
-			power: 30 
+			attackSpeed: 60,
+			power: 30
 		},
-		picked = false
+		picked = false,
+		owner = newUnknown
 	) {
 		this.attribute = attribute;
 		this.picked = picked;
+		this.owner = owner;
 	}
 	findTarget(bayaniList: BayaniList): Bayani {
 		const choosen = Math.floor(Math.random() * bayaniList.bayani.length);
 		return bayaniList.bayani[choosen];
 	}
-	execute(alies: BayaniList, enemy: BayaniList): void {
+	execute(p1: Player, p2: Player): void {
+		const enemy = p1.name === this.owner.name ? p2.bayanis : p1.bayanis;
 		const target = this.findTarget(enemy);
 		target.attribute.health -= this.attribute.power;
 	}

@@ -2,7 +2,7 @@ import { Bayani } from '../bayanis/bayani';
 import { BayaniList } from '../obj/bayanis';
 import { Player } from './player';
 
-class Bossing implements Player {
+class Unknown implements Player {
 	health: number;
 	totalHealth: number;
 	name: string;
@@ -11,7 +11,7 @@ class Bossing implements Player {
 	constructor(
 		health = 0,
 		totalHealth = 0,
-		name = 'Bossing',
+		name = 'Unknown',
 		bayanis: BayaniList = { bayani: [] },
 	) {
 		this.health = health;
@@ -24,7 +24,7 @@ class Bossing implements Player {
 		if (this.bayanis.bayani.length < 5) {
 			this.bayanis.bayani.push(bayani);
 			this.totalHealth += bayani.attribute.totalHealth;
-			this.calculateHealth();
+			this.health = this.totalHealth;
 			return;
 		}
 	}
@@ -41,5 +41,5 @@ class Bossing implements Player {
 	}
 }
 
-const newBossing = (): Player => new Bossing();
-export default newBossing();
+const newUnknown = (): Player => new Unknown();
+export default newUnknown();

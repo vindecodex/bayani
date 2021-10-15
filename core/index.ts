@@ -29,7 +29,7 @@ console.log(g.getBayaniUnpicked());
 
 
 console.log('===========BOT PICKS==============')
-while(!g.getPlayerB().isReady()) {
+while (!g.getPlayerB().isReady()) {
 	g.randomPick(g.getPlayerB());
 }
 console.log(g.getPlayerB().bayanis);
@@ -42,7 +42,7 @@ const lineup = g.getLineUp();
 g.battle((p1, p2) => {
 	lineup.bayani.forEach(bayani => {
 		console.log(`P1: ${p1.health} - P2: ${p2.health}`);
-		bayani.execute(p1.bayanis, p2.bayanis);
+		bayani.execute(p1, p2);
 		p1.calculateHealth();
 		p2.calculateHealth();
 	});

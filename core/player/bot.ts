@@ -12,7 +12,7 @@ export class Bot implements Player {
 		health = 0,
 		totalHealth = 0,
 		name = 'Bot',
-		bayanis: BayaniList = { bayani: []},
+		bayanis: BayaniList = { bayani: [] },
 	) {
 		this.health = health;
 		this.totalHealth = totalHealth;
@@ -24,7 +24,7 @@ export class Bot implements Player {
 		if (this.bayanis.bayani.length < 5) {
 			this.bayanis.bayani.push(bayani);
 			this.totalHealth += bayani.attribute.totalHealth;
-			this.health = this.totalHealth;
+			this.calculateHealth();
 			return;
 		}
 	}
