@@ -13,7 +13,7 @@ import { gagamboy } from './gagamboy';
 import { ninja } from './ninja';
 import { pedro } from './pedro';
 import { joy } from './joy';
-import { rastaman } from './joy';
+import { rastaman } from './rastaman';
 
 bayaniMenu.register(lapulapu);
 bayaniMenu.register(pakito);
